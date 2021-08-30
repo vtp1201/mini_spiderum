@@ -13,7 +13,7 @@ class AuthController {
     // login
     loginUser (req, res, next) {
         const { username, password } = req.body;
-        console.log(username, password);
+        console.log(req.body);
         User.findOne({username: username}, (err, user) => {
             if (user) {
                 bcrypt.compare(password, user.password, (err, same) => {
