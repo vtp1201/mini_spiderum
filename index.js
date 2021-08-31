@@ -10,6 +10,7 @@ const app = express();
 const route = require('./routes/index');
 const db = require('./config/db/index');
 
+//app.use(morgan('combined'));
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
 
@@ -18,9 +19,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(expressSession({
     secret: 'keyboard cat',
-    resave: false,
+    resave: true,
     saveUninitialized: true,
-    cookie: { secure: true },
 }));
 
 // Connect to DB
@@ -31,6 +31,12 @@ app.set('view engine', 'ejs');
 
 // Routes init
 route(app);
+
+global.loggedIn = null;
+app.use('*', (req, res, next) => {
+    loggedIn = req.session.userId;
+    next();
+});
 
 app.listen(5000, () => {
     console.log('listening on port 5000');

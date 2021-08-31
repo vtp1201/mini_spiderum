@@ -13,32 +13,28 @@ class AuthController {
     // login
     loginUser (req, res, next) {
         const { username, password } = req.body;
-        console.log(req.body);
         User.findOne({username: username}, (err, user) => {
             if (user) {
                 bcrypt.compare(password, user.password, (err, same) => {
                     if (same) {
-                        req.Session.userID = user.id;
+                        req.session.userId = user._id;
                         res.redirect('/');
-                    } else {
-                        res.redirect('/auth/login');
+                        return;
                     }
+                    res.redirect('/auth/login');
                 });
-            } else {
-                res.redirect('/auth/login');
+                return;  
             }
+            res.redirect('/auth/login');       
         });
     }
     // register
     declareUser (req, res, next) {
-        User.create(req.body, (err, user) => {
-            if (err) {
-                res.redirect('/auth/register');
-                console.log(err);
-                return;
-            }
-            res.redirect('/');
-        });
+        const user = new User(req.body);
+        user
+            .save()
+            .then(() => res.redirect('/'))
+            .catch(err => {});
     }
 }
 
