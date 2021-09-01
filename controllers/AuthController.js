@@ -34,7 +34,11 @@ class AuthController {
         user
             .save()
             .then(() => res.redirect('/'))
-            .catch(err => {});
+            .catch(err => res.redirect('/auth/register'));
+    }
+    // logout
+    logout (req, res, next) {
+        req.session.destroy(() => res.redirect('/'));
     }
 }
 

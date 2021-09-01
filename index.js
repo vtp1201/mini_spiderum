@@ -29,14 +29,15 @@ db.connect();
 // view engine
 app.set('view engine', 'ejs');
 
+// check login
+global.loggedIn = null;
+app.use("*", (req, res, next) => {
+    loggedIn = req.session.userId;
+    next()
+});
+
 // Routes init
 route(app);
-
-global.loggedIn = null;
-app.use('*', (req, res, next) => {
-    loggedIn = req.session.userId;
-    next();
-});
 
 app.listen(5000, () => {
     console.log('listening on port 5000');
