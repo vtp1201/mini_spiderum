@@ -2,15 +2,15 @@ const bcrypt = require('bcrypt');
 const User = require('../models/User');
 
 class AuthController {
-    // render login page
+    // [GET] auth/login
     login(req, res, next) {
-        res.render('login');
+        res.render('users/login');
     }
-    // render register page
+    // [GET] auth/register
     register(req, res, next) {
-        res.render('register');
+        res.render('users/register');
     }
-    // login
+    // [POST] auth/login-user
     loginUser (req, res, next) {
         const { username, password } = req.body;
         User.findOne({username: username}, (err, user) => {
@@ -28,7 +28,7 @@ class AuthController {
             res.redirect('/auth/login');       
         });
     }
-    // register
+    // [POST] auth/register-user
     declareUser (req, res, next) {
         const user = new User(req.body);
         user
@@ -36,7 +36,7 @@ class AuthController {
             .then(() => res.redirect('/'))
             .catch(err => res.redirect('/auth/register'));
     }
-    // logout
+    // [GET] auth/logout
     logout (req, res, next) {
         req.session.destroy(() => res.redirect('/'));
     }
