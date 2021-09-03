@@ -14,6 +14,8 @@ const User = new Schema(
         description: String,
         dob: Date,
         gender: String,
+        following: [ {userId: String} ],
+        followers: [ {userId: String} ],
         slug: { type: String, slug: 'title', unique: true },
     },
     {

@@ -2,7 +2,7 @@ const siteRouter = require('./site');
 const authRouter = require('./auth');
 const categoryRouter = require('./category');
 const articleRouter = require('./article');
-const authorRouter = require('./author');
+const userRouter = require('./user');
 
 function route(app) {
     
@@ -14,7 +14,7 @@ function route(app) {
 
     app.use('/article', articleRouter);
 
-    app.use('/author', authorRouter);
+    app.use('/user', userRouter);
 
     app.use((req, res) => {
         res.render('notfound')

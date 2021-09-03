@@ -1,8 +1,8 @@
 const User = require('../models/User');
 const { mongooseToObject } = require('../util/mongoose');
 
-class AuthorController {
-    // show profile user
+class UserController {
+    // [GET] user/:slug
     show(req, res, next) {
         User.findOne( {slug: req.params.slug} )
             .then( user => 
@@ -10,7 +10,12 @@ class AuthorController {
                     user: mongooseToObject(user),
                 })    
             )
+            .catch(next);
     }
-}
+    // [GET] user/edit-profile
+    showEdit(req, res, next) {
+        res.render('/users/editProfile');
+    }
+};
 
-module.exports = new AuthorController();
+module.exports = new UserController();

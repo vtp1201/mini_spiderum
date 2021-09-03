@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include('layouts/header') -%>
+<%- include('../layouts/header') -%>
   <style>
     .login-or {
       position: relative;
@@ -29,9 +29,9 @@
   </style>
 <!-- Main -->
 <body>
-  <div class="container-fluid bg-light pb-3 pt-5">
+  <div class="container-fluid bg-light pb-5 pt-5">
     <div class="row">
-      <div class="col-md-5 mx-auto pt-5">
+      <div class="col-md-5 mx-auto ps-5 py-3">
         <div class="position-relative d-xl-flex flex-column p-2" style="border: 1px solid rgba(0,0,0,.2); border-radius: 1.1rem; max-width: 500px; min-width: 300px; background-color: #fff">
           <div class="logo mb-3">
             <div class="col-md-12 text-center my-3">
@@ -56,8 +56,11 @@
               <label for="floatingPassword"><span><i class="fa fa-lock"></i></span> Password-confirmation</label>
             </div>
             <div class="px-0 py-2">
-                  <div class="mt-2 form-check d-flex flex-row"> <input class="form-check-input" type="checkbox" value="" id="services"> <label class="form-check-label ms-2" for="services"> I have read and agree to the terms. </label> </div>
+              <div class="custom-control custom-checkbox"> 
+                <input class="custom-control-input" type="checkbox" value="" id="services"> 
+                <label class="custom-control-label text-start" for="services"> I have read and agree to the terms. </label> 
               </div>
+            </div>
             <div class="col-md-12 text-center ">
               <button type="submit" class="btn btn-block rounded-pill btn-primary">Signup</button>
             </div>
@@ -69,15 +72,14 @@
             </div>
           </div>
           <div class="text-center">Already have an account?
-            <a class="register-link" href="#">Signin</a>
+            <a class="register-link" href="/auth/login" target="_blank">Signin</a>
           </div>  
         </div> 
       </div>
     </div>
   </div>
 
-  <%- include('layouts/footer')  -%>
-  <%- include('layouts/scripts')  -%>
+  <%- include('../layouts/scripts')  -%>
 
 </body>
 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../layouts/header') -%>
+<%- include('../layouts/navbar') -%>
+<body>
+    <div _ngcontent-serverapp-c85="" class="container relative mx-auto justify-center mt-40">
+        <div _ngcontent-serverapp-c85="" class="wrapper w-full py-6 relative">
+            <div _ngcontent-serverapp-c85="" class="change-mode-tab">
+                <ul _ngcontent-serverapp-c85="" class="list-unstyled list-tab clearfix">
+                    <li _ngcontent-serverapp-c85="" class="cursor-pointer hover:text-blue-600 mb-3 active">
+                        <a _ngcontent-serverapp-c85="" class="pl-1">Tài khoản</a>
+                    </li>
+                    <li _ngcontent-serverapp-c85="" class="cursor-pointer hover:text-blue-600 mb-3">
+                        <a _ngcontent-serverapp-c85="" class="pl-1">Tiểu sử</a>
+                    </li>
+                    <li _ngcontent-serverapp-c85="" class="cursor-pointer hover:text-blue-600 mb-3">
+                        <a _ngcontent-serverapp-c85="" class="pl-1">Series</a>
+                    </li>
+                </ul>
+            </div>
+            <account-section _ngcontent-serverapp-c85="" _nghost-serverapp-c82="" class="ng-tns-c82-1 ng-star-inserted">
+                <div _ngcontent-serverapp-c82="" class="email-change-section modal ng-tns-c82-1 invisible">
+                    <div _ngcontent-serverapp-c82="" class="modal-box ng-tns-c82-1">
+                        <form _ngcontent-serverapp-c82="" novalidate="" class="ng-tns-c82-1 ng-untouched ng-pristine ng-invalid">
+                            <div _ngcontent-serverapp-c82="" class="flex flex-wrap mb-6 ng-tns-c82-1">
+                                <div _ngcontent-serverapp-c82="" class="w-full px-3 mb-6 md:mb-0 ng-tns-c82-1">
+                                    <label _ngcontent-serverapp-c82="" for="email" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 ng-tns-c82-1"> Email mới </label>
+                                    <div _ngcontent-serverapp-c82="" class="relative hover:text-blue-500 ng-tns-c82-1">
+                                        <input _ngcontent-serverapp-c82="" formcontrolname="email" id="email" type="text" placeholder="example@email.com" class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ng-tns-c82-1 ng-untouched ng-pristine ng-invalid">
+                                    </div>
+                                </div>
+                            </div>
+                            <div _ngcontent-serverapp-c82="" class="flex flex-wrap mb-6 ng-tns-c82-1">
+                                <div _ngcontent-serverapp-c82="" class="w-full px-3 mb-6 md:mb-0 ng-tns-c82-1">
+                                    <label _ngcontent-serverapp-c82="" for="confirm-password" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 ng-tns-c82-1"> Mật khẩu xác nhận </label>
+                                    <div _ngcontent-serverapp-c82="" class="relative hover:text-blue-500 ng-tns-c82-1">
+                                        <input _ngcontent-serverapp-c82="" formcontrolname="confirmPassword" id="confirm-password" type="password" placeholder="************" class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ng-tns-c82-1 ng-untouched ng-pristine ng-invalid">
+                                    </div>
+                                </div>
+                            </div>
+                            <div _ngcontent-serverapp-c82="" class="flex justify-end ng-tns-c82-1">
+                                <button _ngcontent-serverapp-c82="" class="focus:outline-none flex items-center justify-center bg-white hover:bg-gray-200 h-10 w-auto px-6 text-black rounded-full shadow:sp cursor-pointer ng-tns-c82-1">
+                                    <span _ngcontent-serverapp-c82="" class="text block ng-tns-c82-1">Huỷ</span>
+                                </button>
+                                <button _ngcontent-serverapp-c82="" class="ml-3 focus:outline-none flex items-center justify-center bg-blue-500 hover:bg-blue-600 h-10 w-auto px-6 text-white rounded-full shadow:sp cursor-pointer ng-tns-c82-1">
+                                    <span _ngcontent-serverapp-c82="" class="text block ng-tns-c82-1">Xác nhận</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../layouts/footer') -%>
+        <!-- Bootstrap core JS-->
+<%- include('../layouts/scripts') -%>
+</body>
+</html>
