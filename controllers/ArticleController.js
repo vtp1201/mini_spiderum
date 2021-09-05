@@ -1,4 +1,5 @@
 const Article = require('../models/Article');
+const Category = require('../models/Category');
 const { mongooseToObject } = require('../util/mongoose');
 
 class ArticleController {
@@ -17,7 +18,7 @@ class ArticleController {
         res.render('articles/create');
     }
     // [POST] article/create-article
-    create(req, res, next) {
+    store(req, res, next) {
         const article = new Article(req.body);
         article
             .save()
@@ -25,7 +26,7 @@ class ArticleController {
             .catch(next);
     }
     // [GET] article/:id/edit
-    edit(req, res, next){
+    edit(req, res, next) {
         Article.findById(req.params.id)
             .then( article => 
                 res.render('article/edit', {
@@ -34,15 +35,27 @@ class ArticleController {
             )
     }
     // [PUT] article/:id/edit-article
-    update(req, res, next){
+    update(req, res, next) {
         Article.findByIdAndUpdate(req.params.id, req.body)
             .then(() => res.redirect(`/`))
             .catch(next);
     }
     // [DELETE] article/:id/delete
-    delete(req, res, next){
-        Article.findByIdAndDelete(req.params.id)
-            .then(() => res.redirect(`/`))
+    delete(req, res, next) {
+        Article.delete({ _id:req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
+    }
+    // [DELETE] article/:id/force
+    destroy(req, res, next) {
+        Article.deleteOne({ _id:req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
+    }
+    // [PATCH] article/:id/restore
+    restore(req, res, next) {
+        Article.restore({ _id:req.params.id})
+            .then(() => res.redirect('back'))
             .catch(next);
     }
 }
