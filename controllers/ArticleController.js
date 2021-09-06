@@ -19,6 +19,7 @@ class ArticleController {
     }
     // [POST] article/create-article
     store(req, res, next) {
+        req.body.creatorId = req.session.userId;
         const article = new Article(req.body);
         article
             .save()

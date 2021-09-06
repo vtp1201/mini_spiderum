@@ -1,14 +1,14 @@
 const express = require('express');
-const { checkLogged, checkNotLogged } = require('../controllers/middleware/authMiddleware')
+const { checkAdmin } = require('../controllers/middleware/authMiddleware')
 const router = express.Router();
 
 const CategoryController = require('../controllers/CategoryController');
 
-router.get('/:slug', CategoryController.show);
-router.get('/create', CategoryController.create);
-router.post('/store', CategoryController.store);
-router.get('/:id/edit', CategoryController.edit);
-router.put(':id/edit-category', CategoryController.update);
+router.get('/:slug', checkAdmin, CategoryController.show);
+router.get('/create', checkAdmin, CategoryController.create);
+router.post('/store', checkAdmin, CategoryController.store);
+router.get('/:id/edit', checkAdmin, CategoryController.edit);
+router.put(':id/edit-category', checkAdmin, CategoryController.update);
 
 
 module.exports = router;
