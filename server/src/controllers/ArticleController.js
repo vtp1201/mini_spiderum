@@ -59,6 +59,31 @@ class ArticleController {
             .then(() => res.redirect('back'))
             .catch(next);
     }
+    // [PUT] article/:id/comments
+    addComment(req, res, next) {
+        Article.findById(req.params.id)
+            .then( article => {
+                const newComment = { 
+                    userId: req.session.userId,
+                    comment: req.body.comment,
+                    date: Date.now(),
+                };
+                article.comments.push(newComment);
+                article.save();
+                res.redirect('back');
+            })
+            .catch(next)
+    }
+    // [PUT] article/:id/vote
+    vote(req, res, next) {
+        Article.findById(req.params.id)
+            .then( article => {
+                const vote = article.votes.find( votes => votes.userId == req.session.userId);
+                if (vote) {
+                    
+                }
+            })
+    }
 }
 
 module.exports = new ArticleController();
