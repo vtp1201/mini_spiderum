@@ -1,0 +1,58 @@
+version: '3.4'
+
+services:
+  server:
+    image: server
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_NAME=${DB_NAME}
+      - DB_PORT=${DB_PORT}
+      - PYTHON_HOST=${PYTHON_HOST}
+      - PYTHON_PORT=${PYTHON_PORT}
+      - PORT=${PORT}
+    ports:
+      - "${PORT}:${PORT}"
+    restart: unless-stopped
+    depends_on:
+        - db
+        - recommend
+
+  db:
+    image: mongo
+    volumes:
+      - mongodata:/data/db
+    restart: unless-stopped
+    ports: 
+      - "${DB_PORT}:${DB_PORT}"
+
+  client:
+    image: client
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    ports:
+      - "${CLIENT_PORT}:${CLIENT_PORT}"
+    restart: unless-stopped
+    depends_on:
+      - server
+
+  recommend:
+    image: recommend
+    build: 
+      context: .
+      dockerfile: recommend/Dockerfile
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+    command: python manage.py runserver 0.0.0.0:8000
+    ports: 
+      - "${RECOMMEND_PORT}:${RECOMMEND_PORT}"
+    restart: unless-stopped
+    depends_on:
+      - db
+volumes:
+  mongodata:
