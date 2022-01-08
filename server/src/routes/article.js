@@ -1,8 +1,8 @@
 const express = require('express');
-const { checkLogged } = require('../controllers/middleware/authMiddleware')
+const { checkLogged } = require('../app/middleware/authMiddleware')
 const router = express.Router();
 
-const ArticleController = require('../controllers/ArticleController');
+const ArticleController = require('../app/controllers/ArticleController');
 
 router.get('/:slug', checkLogged, ArticleController.show);
 router.get('/create', checkLogged, ArticleController.create);

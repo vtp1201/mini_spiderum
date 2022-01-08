@@ -1,8 +1,8 @@
 const express = require('express');
-const { checkAdmin } = require('../controllers/middleware/authMiddleware')
+const { checkAdmin } = require('../app/middleware/authMiddleware')
 const router = express.Router();
 
-const CategoryController = require('../controllers/CategoryController');
+const CategoryController = require('../app/controllers/CategoryController');
 
 router.get('/:slug', checkAdmin, CategoryController.show);
 router.get('/create', checkAdmin, CategoryController.create);

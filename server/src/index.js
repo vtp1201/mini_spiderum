@@ -1,5 +1,4 @@
 const express = require('express')
-const ejs = require('ejs');
 const methodOverride = require('method-override');
 const path = require('path');
 const morgan = require('morgan');
@@ -7,8 +6,8 @@ const expressSession = require('express-session');
 
 const app = express();
 
-const route = require('./routes/index');
-const db = require('./config/db/index');
+const route = require('./src/routes/index');
+const db = require('./src/config/db/index');
 
 //app.use(morgan('combined'));
 app.use(express.static('public'));
@@ -25,9 +24,6 @@ app.use(expressSession({
 
 // Connect to DB
 db.connect();
-
-// view engine
-app.set('view engine', 'ejs');
 
 // check login
 global.loggedIn = null;
