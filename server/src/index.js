@@ -6,12 +6,12 @@ const expressSession = require('express-session');
 
 const app = express();
 
-const route = require('./src/routes/index');
-const db = require('./src/config/db/index');
+const route = require('./routes/index');
+const db = require('./config/db/index');
 
 //app.use(morgan('combined'));
-app.use(express.static('public'));
 app.use(methodOverride('_method'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true })); 
