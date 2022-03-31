@@ -1,14 +1,17 @@
 const mongoose = require('mongoose');
 
+const dbHost = process.env.DB_HOST || 'localhost';
+const dbPort = process.env.DB_PORT || 27017;
+const dbName = process.env.DB_NAME || 'mini_spiderum';
+const uri = `mongodb://${dbHost}:${dbPort}/${dbName}`;
+
 async function connect() {
     try {
-        await mongoose.connect('mongodb://localhost:27017/mini_spiderum', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
+        await mongoose.connect(uri);
         console.log('connect success');
     } catch (err) {
-        console.log(err);
+        console.log('Failed to connect to mongo on startup - retrying in 5 sec');
+        setTimeout(connect(), 5000);
     }
 }
 

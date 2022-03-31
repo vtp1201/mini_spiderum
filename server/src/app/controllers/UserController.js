@@ -1,5 +1,5 @@
 const User = require('../models/User');
-const { mongooseToObject } = require('../util/mongoose');
+const { mongooseToObject } = require('../../util/mongoose');
 
 class UserController {
     // [GET] user/:slug

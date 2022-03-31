@@ -1,6 +1,6 @@
 const Article = require('../models/Article');
 const Category = require('../models/Category');
-const { mongooseToObject } = require('../util/mongoose');
+const { mongooseToObject } = require('../../util/mongoose');
 
 class ArticleController {
     // [GET] article/:slug

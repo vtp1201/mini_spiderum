@@ -1,5 +1,5 @@
 const Category = require('../models/Category');
-const { mongooseToObject } = require('../util/mongoose');
+const { mongooseToObject } = require('../../util/mongoose');
 
 class CategoryController {
     // [GET] category/:slug
