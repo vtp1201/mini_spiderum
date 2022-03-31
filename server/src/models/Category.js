@@ -5,10 +5,10 @@ const Schema = mongoose.Schema;
 
 const Category = new Schema(
     {
-        title: { type: String, required: true,},
-        description: { type: String, required: true },
-        articles: [ {id: String} ],
-        slug: { type: String, slug: 'title', unique: true },
+        title: { type: Schema.Types.String, required: true,},
+        description: { type: Schema.Types.String, required: true },
+        articles: [{ type: Schema.Types.ObjectId, ref:'Article'}],
+        slug: { type: Schema.Types.String, slug: 'title', unique: true },
     },
     {
         timestamps: true,

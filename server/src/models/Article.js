@@ -6,23 +6,30 @@ const Schema = mongoose.Schema;
 
 const Article = new Schema (
     {
-        title: { type: String, required: true, },
-        creatorId: { type: String, required: true, },
-        category: { type: String, required: true},
+        title: { type: Schema.Types.String, required: true,},
+        creatorId: { 
+            type: Schema.Types.ObjectId, 
+            ref: 'User', 
+            required: true,
+        },
+        categoryId: { 
+            type: Schema.Types.ObjectId, 
+            required: true,
+            ref: 'Category',
+        },
         comments: [ 
             {
-                userId: String,
-                comment: String,
-                date: Date,
+                type: Schema.Types.ObjectId,
+                ref: 'Comment',
             }
         ],
         votes: [
             {
-                userId: String,
-                vote: Number,
+                type: Schema.Types.ObjectId,
+                ref: 'Vote',
             }
         ],
-        slug: { type: String, slug: 'title', unique: true },
+        slug: { type: Schema.Types.String, slug: 'title', unique: true },
     },
     {
         timestamps: true,
