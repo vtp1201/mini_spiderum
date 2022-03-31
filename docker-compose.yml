@@ -10,9 +10,6 @@ services:
       - DB_HOST=${DB_HOST}
       - DB_NAME=${DB_NAME}
       - DB_PORT=${DB_PORT}
-      - PYTHON_HOST=${PYTHON_HOST}
-      - PYTHON_PORT=${PYTHON_PORT}
-      - PORT=${PORT}
     ports:
       - "${PORT}:${PORT}"
     restart: unless-stopped
