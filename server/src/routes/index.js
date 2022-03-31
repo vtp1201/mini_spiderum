@@ -4,16 +4,17 @@ const articleRouter = require('./article');
 const userRouter = require('./user');
 
 function route(app) {
-    app.use('/api/auth', authRouter);
+    app.use('/api/v1/auth', authRouter);
 
-    app.use('/api/category', categoryRouter);
+    app.use('/api/v1/category', categoryRouter);
 
-    app.use('/api/article', articleRouter);
+    app.use('/api/v1/article', articleRouter);
 
-    app.use('/api/user', userRouter);
+    app.use('/api/v1/user', userRouter);
 
     app.use((req, res) => {
-        res.sent('notfound');
+        res.status(404);
+        res.json({msg: 'notfound'});
     })
 }
 
