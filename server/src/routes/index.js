@@ -3,8 +3,8 @@ const categoryRouter = require('./category');
 const articleRouter = require('./article');
 const userRouter = require('./user');
 
-function route(app) {
-    app.use('/api/v1/auth', authRouter);
+function route(app, passport) {
+    app.use('/api/v1/auth', authRouter(passport));
 
     app.use('/api/v1/category', categoryRouter);
 
